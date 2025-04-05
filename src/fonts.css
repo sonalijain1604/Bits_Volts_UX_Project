@@ -1,0 +1,17 @@
+/* Since we don't have the actual Positivus font files,
+   we'll use a fallback system font and eventually 
+   you should replace this with the actual font files */
+
+@font-face {
+  font-family: 'Positivus';
+  src: local('Arial');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Positivus';
+  src: local('Arial Bold');
+  font-weight: 700;
+  font-style: normal;
+} 
