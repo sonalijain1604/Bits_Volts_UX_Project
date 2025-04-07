@@ -1,87 +1,73 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const WorkingProcess = () => {
-  const [expandedStep, setExpandedStep] = useState(1);
+  const [openStep, setOpenStep] = useState(0);
 
-  const steps = [
+  const processSteps = [
     {
-      id: 1,
+      number: '01',
       title: 'Consultation',
-      description: 'During our first meeting, we\'ll discuss your business goals and objectives, target audience, and current marketing efforts to determine the best approach for your digital strategy.',
+      description: 'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.'
     },
     {
-      id: 2,
+      number: '02',
       title: 'Research and Strategy Development',
-      description: 'Our team conducts thorough research on your industry, competitors, and target audience to develop a customized digital marketing strategy that aligns with your business goals.',
-    },
-    {
-      id: 3,
-      title: 'Implementation',
-      description: 'Once the strategy is approved, we begin implementing the various components of your digital marketing plan, from website optimization to content creation and campaign setup.',
-    },
-    {
-      id: 4,
-      title: 'Monitoring and Optimization',
-      description: 'We continuously monitor the performance of your campaigns and make data-driven adjustments to optimize results and maximize your return on investment.',
-    },
-    {
-      id: 5,
-      title: 'Reporting and Communication',
-      description: 'Regular reports keep you informed about the performance of your digital marketing efforts, and ongoing communication ensures that we can adapt the strategy as needed.',
+      description: 'Our team conducts thorough market research and develops a comprehensive strategy tailored to your business goals.'
     }
   ];
 
-  const toggleStep = (id) => {
-    setExpandedStep(expandedStep === id ? null : id);
-  };
-
   return (
-    <section className="py-16 bg-dark" id="process">
+    <section className="py-16 bg-[#9EF01A]">
       <div className="container mx-auto px-4">
-        <div className="mb-12">
-          <h2 className="text-primary text-3xl font-bold mb-4">Our Working Process</h2>
-          <p className="text-white text-lg max-w-2xl">
-            Our approach is methodical and tailored to each client's unique needs, ensuring the best possible results for your business.
+        <div className="mb-8">
+          <div className="inline-block px-4 py-2 bg-white rounded-full text-black text-sm mb-4">
+            Our Working Process
+          </div>
+          <h2 className="text-2xl font-bold mb-4">
+            Step-by-Step Guide to Success
+          </h2>
+          <p className="text-black/80 mb-8">
+            We follow a proven process to help your business achieve its digital marketing goals
           </p>
         </div>
-        
-        <div className="bg-primary rounded-lg p-6 md:p-8">
-          <div className="space-y-4">
-            {steps.map((step) => (
-              <div key={step.id} className="bg-white rounded-lg overflow-hidden">
-                <button 
-                  className={`w-full text-left py-4 px-6 flex items-center justify-between font-bold ${
-                    expandedStep === step.id ? 'bg-dark text-white' : 'bg-white text-dark'
-                  }`}
-                  onClick={() => toggleStep(step.id)}
-                >
-                  <div className="flex items-center">
-                    <span className="bg-primary text-dark rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">
-                      {step.id < 10 ? `0${step.id}` : step.id}
-                    </span>
-                    {step.title}
-                  </div>
-                  <svg 
-                    className={`w-6 h-6 transform transition-transform ${
-                      expandedStep === step.id ? 'rotate-180' : ''
-                    }`} 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24" 
-                    xmlns="http://www.w3.org/2000/svg"
+
+        <div className="space-y-4">
+          {processSteps.map((step, index) => (
+            <div
+              key={step.number}
+              className={`rounded-2xl ${
+                openStep === index ? 'bg-[#9EF01A]' : 'bg-white'
+              }`}
+            >
+              <button
+                className="w-full px-6 py-4 flex items-center justify-between text-left"
+                onClick={() => setOpenStep(openStep === index ? -1 : index)}
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-xl font-medium">{step.number}</span>
+                  <span className="text-xl font-medium">{step.title}</span>
+                </div>
+                <span className="text-2xl">
+                  {openStep === index ? '−' : '+'}
+                </span>
+              </button>
+              
+              <AnimatePresence>
+                {openStep === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="px-6 pb-4"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                
-                {expandedStep === step.id && (
-                  <div className="py-4 px-6 bg-white text-dark">
-                    <p>{step.description}</p>
-                  </div>
+                    <p className="text-black/80 pl-10">{step.description}</p>
+                  </motion.div>
                 )}
-              </div>
-            ))}
-          </div>
+              </AnimatePresence>
+            </div>
+          ))}
         </div>
       </div>
     </section>

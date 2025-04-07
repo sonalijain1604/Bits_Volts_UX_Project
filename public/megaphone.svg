@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="rotate(-15 200 200)">
+    <!-- Megaphone body -->
+    <path d="M150 180 L280 120 L300 220 L170 280 Z" fill="#B9FF66" stroke="#191A23" stroke-width="4"/>
+    <!-- Megaphone cone -->
+    <path d="M280 120 L380 80 L400 200 L300 220 Z" fill="#191A23"/>
+    <!-- Sound waves -->
+    <g stroke="#B9FF66" stroke-width="4" fill="none">
+      <path d="M320 150 Q340 160 360 150" />
+      <path d="M330 170 Q350 180 370 170" />
+      <path d="M320 190 Q340 200 360 190" />
+    </g>
+    <!-- Handle -->
+    <path d="M170 240 L150 280 L130 270 L150 230 Z" fill="#191A23"/>
+    <!-- Decorative elements -->
+    <circle cx="200" cy="200" r="8" fill="#B9FF66"/>
+    <circle cx="240" cy="160" r="6" fill="#B9FF66"/>
+    <circle cx="280" cy="180" r="10" fill="#B9FF66"/>
+  </g>
+</svg> 

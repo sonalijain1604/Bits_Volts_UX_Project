@@ -1,102 +1,43 @@
-# Bits&Volt React App
+# BitsVolt - Digital Marketing Agency
 
-A modern, responsive web application built with React.js and Tailwind CSS based on a Figma design.
+A modern landing page for a digital marketing agency built with React and Tailwind CSS.
 
 ## Features
 
-- Responsive design that works on all devices
-- Modern UI with animations and transitions
-- Component-based architecture
-- Built with React.js and Tailwind CSS
-- Clean, maintainable code structure
+- Responsive design
+- Modern UI components
+- Smooth animations
+- SEO optimized
+- Performance focused
 
-## Pages
+## Tech Stack
 
-- Home - Showcase of the company's key products and services
-- About - Company history, mission, and team information
-- Products - Display of the company's product lineup
-- Contact - Contact form and company information
+- React
+- Tailwind CSS
+- Framer Motion
+- React Icons
+- Heroicons
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/bits-volt-ux.git
-cd bits-volt-ux
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
+## Scripts
 
-3. Start the development server
-```bash
-npm start
-# or
-yarn start
-```
-
-4. Open your browser and navigate to `http://localhost:3000`
-
-## Project Structure
-
-```
-bits-volt-ux/
-├── public/
-│   ├── index.html
-│   ├── favicon.ico
-│   └── ...
-├── src/
-│   ├── assets/       # Images, fonts, and other static assets
-│   ├── components/   # Reusable components
-│   ├── context/      # React context for state management
-│   ├── hooks/        # Custom React hooks
-│   ├── pages/        # Page components
-│   ├── utils/        # Utility functions
-│   ├── App.js        # Main App component
-│   ├── index.js      # Entry point
-│   └── ...
-├── package.json
-├── tailwind.config.js
-└── README.md
-```
-
-## Deployment
-
-### Build for Production
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-This will create a `build` directory with optimized production files.
-
-### Deploy to Hosting Service
-
-You can deploy the contents of the `build` directory to any static hosting service like Netlify, Vercel, or GitHub Pages.
-
-## Technologies Used
-
-- React.js - Frontend library
-- Tailwind CSS - Utility-first CSS framework
-- Create React App - Project setup and build tool
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App
 
 ## License
 
-This project is licensed under the MIT License.
-
-## Acknowledgements
-
-- Design inspiration from Figma design: [Link to Figma](https://www.figma.com/design/YtLK5wRrg8BPtfwn9Uuqzq/Untitled?node-id=2-1612&t=83sooeaQGWNhmqr4-1)
+MIT

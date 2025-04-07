@@ -1,103 +1,90 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const testimonials = [
+  {
+    name: 'John Smith',
+    role: 'Marketing Director at XYZ Corp',
+    content: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.'
+  },
+  {
+    name: 'John Smith',
+    role: 'Marketing Director at XYZ Corp',
+    content: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.'
+  },
+  {
+    name: 'John Smith',
+    role: 'Marketing Director at XYZ Corp',
+    content: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.'
+  }
+];
 
 const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const testimonials = [
-    {
-      id: 1,
-      text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their digital marketing efforts. Their team is professional, responsive, and truly cares about the success of our business.",
-      author: "John Smith",
-      position: "CEO, TechLink Solutions"
-    },
-    {
-      id: 2,
-      text: "The team at Positivus has been instrumental in helping us establish a strong online presence. Their SEO and PPC strategies have driven quality traffic to our website, resulting in a 40% increase in online sales. We highly recommend their services.",
-      author: "Sarah Johnson",
-      position: "Marketing Director, Retail Innovations"
-    },
-    {
-      id: 3,
-      text: "Since partnering with Positivus, our social media engagement has increased dramatically. They have helped us create compelling content that resonates with our audience and drives meaningful interactions. They are a pleasure to work with!",
-      author: "Michael Chen",
-      position: "Social Media Manager, StyleHouse"
-    }
-  ];
-
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const goToSlide = (index) => {
-    setActiveIndex(index);
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <section className="py-16 bg-dark" id="testimonials">
+    <section className="py-16 bg-[#1D1D1D] text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-primary text-3xl font-bold mb-12">Testimonials</h2>
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <div className="inline-block px-4 py-2 bg-[#9EF01A] rounded-lg text-black text-sm mb-4">
+            Testimonials
+          </div>
+          <h2 className="text-3xl font-bold mb-4">
+            Hear from Our Satisfied Clients: Read Our Testimonials
+          </h2>
+          <p className="text-gray-400">
+            to Learn More about Our Digital Marketing Services
+          </p>
+        </div>
 
-        <div className="bg-dark rounded-lg p-1">
-          <div className="relative">
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out" 
-                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-              >
-                {testimonials.map((testimonial) => (
-                  <div 
-                    key={testimonial.id} 
-                    className="w-full flex-shrink-0 p-6 md:p-10"
-                  >
-                    <div className="bg-dark border border-gray-800 rounded-lg p-6 md:p-8">
-                      <p className="text-white text-lg mb-6">"{testimonial.text}"</p>
-                      <div>
-                        <div className="text-white font-bold">{testimonial.author}</div>
-                        <div className="text-gray-400">{testimonial.position}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        {/* Testimonials Slider */}
+        <div className="relative max-w-5xl mx-auto">
+          <div className="bg-[#292929] rounded-3xl p-8 mb-8">
+            <p className="text-lg mb-8">
+              {testimonials[currentIndex].content}
+            </p>
+            <div>
+              <h4 className="font-medium text-[#9EF01A]">
+                {testimonials[currentIndex].name}
+              </h4>
+              <p className="text-gray-400">
+                {testimonials[currentIndex].role}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex justify-between items-center">
+            <button
+              onClick={() => setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+              className="p-2"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    currentIndex === index ? 'bg-[#9EF01A]' : 'bg-gray-600'
+                  }`}
+                />
+              ))}
             </div>
 
-            <div className="flex justify-between items-center mt-6">
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-2 h-2 rounded-full ${
-                      index === activeIndex ? 'bg-primary' : 'bg-gray-600'
-                    }`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <div className="flex space-x-4">
-                <button 
-                  className="bg-dark border border-gray-700 hover:border-primary rounded-full p-2 text-white transition-colors duration-300"
-                  onClick={prevSlide}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button 
-                  className="bg-dark border border-gray-700 hover:border-primary rounded-full p-2 text-white transition-colors duration-300"
-                  onClick={nextSlide}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+              className="p-2"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

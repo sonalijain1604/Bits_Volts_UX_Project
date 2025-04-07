@@ -2,16 +2,26 @@
    we'll use a fallback system font and eventually 
    you should replace this with the actual font files */
 
+/* 
+   Positivus font information
+   The actual font can be found at: https://www.fontshare.com/fonts/positivus 
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
+
 @font-face {
   font-family: 'Positivus';
-  src: local('Arial');
+  src: local('Positivus'), url('https://api.fontshare.com/v2/css?f[]=positivus@400,700&display=swap') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Positivus';
-  src: local('Arial Bold');
+  src: local('Positivus Bold'), url('https://api.fontshare.com/v2/css?f[]=positivus@400,700&display=swap') format('woff2');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 } 

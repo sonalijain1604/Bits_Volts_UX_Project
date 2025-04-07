@@ -1,18 +1,35 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import WorkingProcess from './components/WorkingProcess';
+import Testimonials from './components/Testimonials';
+import TrustedBy from './components/TrustedBy';
 import Footer from './components/Footer';
-import Home from './pages/Home';
+import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark flex flex-col font-positivus">
-      <Header />
-      <main className="flex-grow">
-        <Home />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Services />
+                <TrustedBy />
+                <WorkingProcess />
+                <Testimonials />
+              </>
+            } />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
